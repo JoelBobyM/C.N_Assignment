@@ -5,7 +5,6 @@ class Server
   Socket s;
   ServerSocket ss;
   BufferedReader in;
-  InputStreamReader bf;
   String o = "";
   Server(int port) throws Exception
   {

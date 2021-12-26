@@ -10,7 +10,7 @@ class Client
   Client(String add , int port) throws Exception
   {
     s = new Socket(add,port);
-    System.out.println("CONNECTED TO SERVER : " + str);
+    System.out.println("CONNECTED TO SERVER : " + add);
     pw = new PrintWriter(s.getOutputStream(),true);
     while(!in.equalsIgnoreCase("done"))
     {
