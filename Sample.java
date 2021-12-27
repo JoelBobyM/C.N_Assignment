@@ -4,18 +4,20 @@ import java.io.InputStreamReader;
 
 public class Sample
 {
+    static Process process;
     public static void main(String[] args)
     {
         try
         {
-            Process process = Runtime.getRuntime().exec("pwd");
-            printResults(process);
+            process = Runtime.getRuntime().exec("pwd");
+            System.out.print("RESULT : ");
+            printResults();
         } catch (IOException e)
         {
             System.out.println("IO EXCEPTION");
         }
     }
-    public static void printResults(Process process) throws IOException
+    public static void printResults() throws IOException
     {
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line;
