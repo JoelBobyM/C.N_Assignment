@@ -10,7 +10,7 @@ class Client
   JFrame f1,f2;
   JLabel lb_title,lb_ip;
   JTextField txt_ip,txt_msg;
-  JButton btn_cnct,btn_snd;
+  JButton btn_cnt,btn_snd;
   Socket s;
   PrintWriter pw;
   Client()
@@ -19,20 +19,20 @@ class Client
     lb_title = new JLabel("CONNECT -> SERVER");
     lb_ip = new JLabel("SERVER IP ADDRESS : ");
     txt_ip = new JTextField(20);
-    btn_cnct = new JButton("CONNECT");
+    btn_cnt = new JButton("CONNECT");
 
     f1.add(lb_title);
     f1.add(lb_ip);
     f1.add(txt_ip);
-    f1.add(btn_cnct);
+    f1.add(btn_cnt);
 
     lb_title.setFont(new Font("Times New Roman", Font.BOLD+Font.ITALIC, 20));
     lb_title.setBounds(95,20,250,20);
     lb_ip.setBounds(20,60,150,30);
     txt_ip.setBounds(180,60,200,30);
-    btn_cnct.setBounds(130,110,170,40);
+    btn_cnt.setBounds(130,110,170,40);
 
-    btn_cnct.addActionListener(new ActionListener()
+    btn_cnt.addActionListener(new ActionListener()
     {
       public void actionPerformed(ActionEvent e)
       {
