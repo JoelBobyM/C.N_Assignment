@@ -1,6 +1,6 @@
-import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.net.Socket;
+import java.util.Scanner;
+import java.io.PrintWriter;
 class Client
 {
   Socket s;
