@@ -2,18 +2,17 @@ import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.ServerSocket;
+import java.util.Scanner;
+
 class Server implements Serializable
 {
   Socket s;
   ServerSocket ss;
-  BufferedReader in,reader;
-  String o,c_Ip;
-  String line = "";
-  Process process;
+  BufferedReader in;
+  String o,c_Ip,out;
   InetSocketAddress socketAddress;
-
   PrintWriter pw;
-
+  Scanner sc;
   Server(int port) throws Exception
   {
     ss = new ServerSocket(port);
@@ -23,23 +22,56 @@ class Server implements Serializable
     System.out.println("CONNECTED TO : "+ c_Ip);
     in = new BufferedReader(new InputStreamReader(s.getInputStream()));
     pw = new PrintWriter(s.getOutputStream(),true);
-    while(true)
+    while ((o = in.readLine()) != null)
     {
-      o = in.readLine();
-      if (o.equalsIgnoreCase("done"))
+      o = o.trim();
+      if(o.startsWith("create"))
       {
-        break;
+        o = o.substring(7);
+        File f = new File(o);
+        if (f.createNewFile())
+        {
+          out = "FILE CREATED";
+        }
+        else
+        {
+          out = "FILE ALREADY EXIST";
+        }
+        pw.println(out);
+        pw.flush();
       }
-      process = Runtime.getRuntime().exec(o.trim());
-      reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-      while ((line = reader.readLine()) != null)
+      else if(o.startsWith("delete"))
       {
-        pw.println(line);
+        o = o.substring(7);
+        File f = new File(o);
+        if (f.delete())
+        {
+          out = "FILE DELETED";
+        }
+        else
+        {
+          out = "FAILED TO DELETE THE FILE";
+        }
+        pw.println(out);
+        pw.flush();
       }
-      pw.flush();
-      reader.close();
+      else if(o.startsWith("cat"))
+      {
+        o = o.substring(4);
+        File f = new File(o);
+        sc = new Scanner(f);
+        out = "";
+        while (sc.hasNextLine())
+        {
+          String data = sc.nextLine();
+          System.out.println(data);
+          out = out + " " + data;
+        }
+        pw.println(out);
+        pw.flush();
+        sc.close();
+      }
     }
-    pw.close();
     s.close();
     ss.close();
     in.close();

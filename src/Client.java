@@ -6,11 +6,9 @@ class Client
 {
   Socket s;
   static Scanner sc = new Scanner(System.in);
-  static Scanner sci = new Scanner(System.in);
   PrintWriter pw;
-  String in = "";
-  BufferedReader reader;
-  String line;
+  BufferedReader inp;
+  static String in,str;
   Client(String add , int port)
   {
     try
@@ -18,68 +16,38 @@ class Client
       s = new Socket(add,port);
       System.out.println("SUCCESSFULLY CONNECTED TO SERVER");
       pw = new PrintWriter(s.getOutputStream(),true);
+      inp = new BufferedReader(new InputStreamReader(s.getInputStream()));
     }
     catch (IOException e)
     {
       System.out.println("CONNECTION TO SERVER FAILED");
     }
-    while(true)
+    System.out.println("\n\t       COMMAND : DESCRIPTION");
+    System.out.println("create <file_name.txt> : CREATE AN EMPTY FILE ");
+    System.out.println("   cat <file_name.txt> : READ THE CONTENTS OF FILE ");
+    System.out.println("  edit <file_name.txt> : WRITE SOME TEXT TO THE FILE");
+    System.out.println("delete <file_name.txt> : DELETE A FILE");
+    System.out.println("                  exit : EXIT FROM THE PROGRAM");
+    do
     {
-      System.out.println("\t\tMENU\n1.CREATE FILE IN SERVER'S DIRECTORY\n2.EDIT FILE IN SERVER'S DIRECTORY\n3.DISPLAY CONTENTS OF A FILE IN SERVER'S DIRECTORY\n4.DELETE A FILE IN SERVER'S DIRECTORY\n5.LIST ALL FILES IN SERVER'S DIRECTORY\n6.EXIT");
-      System.out.print("ENTER YOUR CHOICE : ");
-      int ch = sci.nextInt();
-      if(ch == 6)
-      {
-        pw.println("done");
-        pw.flush();
+      System.out.print("\nENTER THE COMMAND : ");
+      in = sc.nextLine();
+      if(in.equalsIgnoreCase("exit"))
         break;
-      }
-      else if(ch == 5)
+      else
       {
-        pw.println("ls");
+        pw.println(in);
         pw.flush();
         try
         {
-          reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
-          while ((line = reader.readLine()) != null)
-          {
-            System.out.println(line);
-          }
-          reader.close();
+          System.out.println(inp.readLine());
         }
-        catch (Exception e)
+        catch (IOException e)
         {
           e.printStackTrace();
         }
       }
-      else if(ch>=1 && ch<=4)
-      {
-        System.out.print("ENTER THE NAME OF FILE (WITH EXTENSION) : ");
-        in = sc.nextLine();
-        in = in.trim();
-        switch (ch)
-        {
-          case 1 ->
-          {
-            in = "touch " + in;
-            pw.println(in);
-            pw.flush();
-          }
-          case 3 ->
-          {
-            in = "cat " + in;
-            pw.println(in);
-            pw.flush();
-          }
-          case 4 ->
-          {
-            in = "rm " + in;
-            pw.println(in);
-            pw.flush();
-          }
-        }
-      }
-    }
+    }while(!in.equals("exit"));
     try
     {
       pw.close();
@@ -93,7 +61,7 @@ class Client
   public static void main(String[] args)
   {
     System.out.print("ENTER THE SERVER ADDRESS : ");
-    String str = sc.nextLine();
+    str = sc.nextLine();
     new Client(str,4444);
   }
 }
