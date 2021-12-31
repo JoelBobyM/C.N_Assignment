@@ -64,7 +64,6 @@ class Server implements Serializable
         while (sc.hasNextLine())
         {
           String data = sc.nextLine();
-          System.out.println(data);
           out = out + " " + data;
         }
         pw.println(out);
