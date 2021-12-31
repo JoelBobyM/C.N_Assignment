@@ -9,7 +9,6 @@ class Client
   static Scanner sci = new Scanner(System.in);
   PrintWriter pw;
   String in = "";
-  ObjectInputStream obin;
   BufferedReader reader;
   String line;
   Client(String add , int port)
@@ -19,7 +18,6 @@ class Client
       s = new Socket(add,port);
       System.out.println("SUCCESSFULLY CONNECTED TO SERVER");
       pw = new PrintWriter(s.getOutputStream(),true);
-      obin = new ObjectInputStream(s.getInputStream());
     }
     catch (IOException e)
     {
@@ -42,11 +40,12 @@ class Client
         pw.flush();
         try
         {
-          reader = (BufferedReader) obin.readObject();
+          reader = new BufferedReader(new InputStreamReader(s.getInputStream()));
           while ((line = reader.readLine()) != null)
           {
             System.out.println(line);
           }
+          reader.close();
         }
         catch (Exception e)
         {
