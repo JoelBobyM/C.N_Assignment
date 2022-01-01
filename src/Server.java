@@ -5,7 +5,6 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.ServerSocket;
 import java.util.Scanner;
-
 class Server
 {
   Socket s;
@@ -38,8 +37,6 @@ class Server
         {
           out = "FILE ALREADY EXIST";
         }
-        pw.println(out);
-        pw.flush();
       }
       else if(o.startsWith("cat"))
       {
@@ -52,9 +49,7 @@ class Server
           String data = sc.nextLine();
           out = out + "\n" + data;
         }
-        out = out + "\ndone";
-        pw.println(out);
-        pw.flush();
+        out = out + "\n\0";
         sc.close();
       }
       else if(o.startsWith("edit"))
@@ -64,8 +59,7 @@ class Server
         out = in.nextLine();
         f.write(out+"\n");
         f.close();
-        pw.println("SUCCESSFULLY WROTE TO THE FILE");
-        pw.flush();
+        out = "SUCCESSFULLY WROTE TO THE FILE";
       }
       else if(o.startsWith("delete"))
       {
@@ -79,9 +73,18 @@ class Server
         {
           out = "FAILED TO DELETE THE FILE";
         }
-        pw.println(out);
-        pw.flush();
       }
+      else if(o.equals("exit"))
+      {
+        out = "DISCONNECTING FROM SERVER";
+      }
+      else
+      {
+        out = "INVALID COMMAND RECEIVED";
+      }
+      pw.println(out);
+      pw.flush();
+      System.out.println(out + " ==> " + o);
     }
     s.close();
     ss.close();

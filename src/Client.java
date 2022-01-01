@@ -2,7 +2,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
-
 class Client
 {
   Socket s;
@@ -25,7 +24,7 @@ class Client
     System.out.println("\n\t       COMMAND : DESCRIPTION");
     System.out.println("create <file_name.txt> : CREATE AN EMPTY FILE ");
     System.out.println("   cat <file_name.txt> : READ THE CONTENTS OF FILE ");
-    System.out.println("  edit <file_name.txt> : WRITE SOME TEXT TO THE FILE");
+    System.out.println("  edit <file_name.txt> : WRITE (APPEND) A STRING TO THE FILE");
     System.out.println("delete <file_name.txt> : DELETE A FILE");
     System.out.println("                  exit : EXIT FROM THE PROGRAM");
     do
@@ -36,7 +35,7 @@ class Client
       pw.flush();
       if(in.startsWith("cat"))
       {
-        while(!(in_edit = inp.nextLine()).equals("done"))
+        while(!(in_edit = inp.nextLine()).equals("\0"))
         {
           System.out.println(in_edit);
         }
@@ -48,7 +47,7 @@ class Client
         pw.println(in_edit);
         System.out.println(inp.nextLine());
       }
-      else if(!in.equals("exit"))
+      else
       {
         System.out.println(inp.nextLine());
       }
