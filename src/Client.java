@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
@@ -8,10 +6,9 @@ import java.util.Scanner;
 class Client
 {
   Socket s;
-  static Scanner sc = new Scanner(System.in);
+  static Scanner sc,inp;
   PrintWriter pw;
-  BufferedReader inp;
-  static String in,str;
+  static String in,str,in_edit;
   Client(String add , int port)
   {
     try
@@ -19,7 +16,7 @@ class Client
       s = new Socket(add,port);
       System.out.println("SUCCESSFULLY CONNECTED TO SERVER");
       pw = new PrintWriter(s.getOutputStream(),true);
-      inp = new BufferedReader(new InputStreamReader(s.getInputStream()));
+      inp = new Scanner(s.getInputStream());
     }
     catch (IOException e)
     {
@@ -34,21 +31,26 @@ class Client
     do
     {
       System.out.print("\nENTER THE COMMAND : ");
-      in = sc.nextLine();
-      if(in.equalsIgnoreCase("exit"))
-        break;
-      else
+      in = sc.nextLine().trim();
+      pw.println(in);
+      pw.flush();
+      if(in.startsWith("cat"))
       {
-        pw.println(in);
-        pw.flush();
-        try
+        while(inp.hasNextLine())
         {
-          System.out.println(inp.readLine());
+            System.out.println(inp.nextLine());
         }
-        catch (IOException e)
-        {
-          e.printStackTrace();
-        }
+      }
+      else if(in.startsWith("edit"))
+      {
+        System.out.print("ENTER THE STRING TO BE WRITTEN : ");
+        in_edit = sc.nextLine().trim();
+        pw.println(in_edit);
+        System.out.println(inp.nextLine());
+      }
+      else if(!in.equals("exit"))
+      {
+        System.out.println(inp.nextLine());
       }
     }while(!in.equals("exit"));
     try
@@ -63,6 +65,7 @@ class Client
   }
   public static void main(String[] args)
   {
+    sc = new Scanner(System.in);
     System.out.print("ENTER THE SERVER ADDRESS : ");
     str = sc.nextLine();
     new Client(str,4444);

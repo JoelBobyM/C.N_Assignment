@@ -1,6 +1,5 @@
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
+import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.net.InetSocketAddress;
@@ -12,11 +11,10 @@ class Server implements Serializable
 {
   Socket s;
   ServerSocket ss;
-  BufferedReader in;
   String o,c_Ip,out;
   InetSocketAddress socketAddress;
   PrintWriter pw;
-  Scanner sc;
+  Scanner in,sc;
   Server(int port) throws Exception
   {
     ss = new ServerSocket(port);
@@ -24,11 +22,11 @@ class Server implements Serializable
     socketAddress = (InetSocketAddress) s.getRemoteSocketAddress();
     c_Ip = socketAddress.getAddress().getHostAddress();
     System.out.println("CONNECTED TO : "+ c_Ip);
-    in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+    in = new Scanner(s.getInputStream());
     pw = new PrintWriter(s.getOutputStream(),true);
-    while ((o = in.readLine()) != null)
+    while (in.hasNextLine())
     {
-      o = o.trim();
+      o = in.nextLine().trim();
       if(o.startsWith("create"))
       {
         o = o.substring(7);
@@ -42,6 +40,31 @@ class Server implements Serializable
           out = "FILE ALREADY EXIST";
         }
         pw.println(out);
+        pw.flush();
+      }
+      else if(o.startsWith("cat"))
+      {
+        o = o.substring(4);
+        File f = new File(o);
+        sc = new Scanner(f);
+        out = "";
+        while (sc.hasNextLine())
+        {
+          String data = sc.nextLine();
+          out = out + "\n" + data;
+        }
+        pw.println(out);
+        pw.flush();
+        sc.close();
+      }
+      else if(o.startsWith("edit"))
+      {
+        o = o.substring(5);
+        FileWriter f = new FileWriter(o,true);
+        out = in.nextLine();
+        f.write(out);
+        f.close();
+        pw.println("SUCCESSFULLY WROTE TO THE FILE");
         pw.flush();
       }
       else if(o.startsWith("delete"))
@@ -58,21 +81,6 @@ class Server implements Serializable
         }
         pw.println(out);
         pw.flush();
-      }
-      else if(o.startsWith("cat"))
-      {
-        o = o.substring(4);
-        File f = new File(o);
-        sc = new Scanner(f);
-        out = "";
-        while (sc.hasNextLine())
-        {
-          String data = sc.nextLine();
-          out = out + " " + data;
-        }
-        pw.println(out);
-        pw.flush();
-        sc.close();
       }
     }
     s.close();
