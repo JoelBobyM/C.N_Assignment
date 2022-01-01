@@ -1,13 +1,12 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.io.Serializable;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.ServerSocket;
 import java.util.Scanner;
 
-class Server implements Serializable
+class Server
 {
   Socket s;
   ServerSocket ss;
@@ -53,6 +52,7 @@ class Server implements Serializable
           String data = sc.nextLine();
           out = out + "\n" + data;
         }
+        out = out + "\ndone";
         pw.println(out);
         pw.flush();
         sc.close();
@@ -62,7 +62,7 @@ class Server implements Serializable
         o = o.substring(5);
         FileWriter f = new FileWriter(o,true);
         out = in.nextLine();
-        f.write(out);
+        f.write(out+"\n");
         f.close();
         pw.println("SUCCESSFULLY WROTE TO THE FILE");
         pw.flush();

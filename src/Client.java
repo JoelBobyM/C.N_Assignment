@@ -36,9 +36,9 @@ class Client
       pw.flush();
       if(in.startsWith("cat"))
       {
-        while(inp.hasNextLine())
+        while(!(in_edit = inp.nextLine()).equals("done"))
         {
-            System.out.println(inp.nextLine());
+          System.out.println(in_edit);
         }
       }
       else if(in.startsWith("edit"))
