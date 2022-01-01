@@ -1,53 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="f5e43f03-e778-44c7-be4c-27b5b0b0cfc7" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="b4ad3be1-a8f5-4164-9a92-55ea16d9f8e4" name="Changes" comment="Java-Program">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/C.N.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GUI/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/GUI/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/GUI/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/GUI/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/GUI/GUI.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GUI/out/production/GUI/GUI.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/f1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/C.N/Client.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/C.N/Sample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/C.N/Server.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitSEFilterConfiguration">
-    <file-type-list>
-      <filtered-out-file-type name="LOCAL_BRANCH" />
-      <filtered-out-file-type name="REMOTE_BRANCH" />
-      <filtered-out-file-type name="TAG" />
-      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
-    </file-type-list>
-  </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/Sample.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/C.N.iml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Client.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Server.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="22oKb80mvIJwbpBNaKBpcdGmgyi" />
+  <component name="ProjectId" id="22tm3hvbnXT4moXtUPRcpV56b4b" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -57,13 +44,22 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="deletionFromPopupRequiresConfirmation" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/GUI" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager" selected="Application.Sample">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
       <module name="C.N" />
@@ -87,36 +83,64 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Sample" />
         <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Sample" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f5e43f03-e778-44c7-be4c-27b5b0b0cfc7" name="Changes" comment="" />
-      <created>1640498569045</created>
+      <changelist id="b4ad3be1-a8f5-4164-9a92-55ea16d9f8e4" name="Changes" comment="" />
+      <created>1640665061846</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1640498569045</updated>
+      <updated>1640665061846</updated>
     </task>
-    <task id="LOCAL-00001" summary="Update">
-      <created>1640541634677</created>
+    <task id="LOCAL-00001" summary="Simple_Java-Program">
+      <created>1640668239232</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1640541634677</updated>
+      <updated>1640668239232</updated>
     </task>
-    <task id="LOCAL-00002" summary="Update">
-      <created>1640542071011</created>
+    <task id="LOCAL-00002" summary="Java-Program">
+      <created>1640953281371</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1640542071011</updated>
+      <updated>1640953281371</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Java-Program">
+      <created>1640958730052</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1640958730052</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Java-Program">
+      <created>1640981399035</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1640981399035</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Java-Program">
+      <created>1640981423855</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1640981423855</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Java-Program">
+      <created>1640981583830</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1640981583830</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -132,11 +156,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+    <MESSAGE value="Simple_Java-Program" />
+    <MESSAGE value="Java-Program" />
+    <option name="LAST_COMMIT_MESSAGE" value="Java-Program" />
   </component>
 </project>
