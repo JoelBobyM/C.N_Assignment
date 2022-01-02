@@ -59,7 +59,7 @@ class Client
     }
     catch (IOException e)
     {
-      System.out.println("IO EXCEPTION "+e);
+      System.out.println("IO EXCEPTION " + e);
     }
   }
   public static void main(String[] args)

@@ -16,13 +16,12 @@ class Server
   Server(int port) throws Exception
   {
     ss = new ServerSocket(port);
+    System.out.println("SERVER STARTED \nWAITING FOR CLIENT CONNECTION......................... ");
     s = ss.accept();
-    socketAddress = (InetSocketAddress) s.getRemoteSocketAddress();
-    c_Ip = socketAddress.getAddress().getHostAddress();
-    System.out.println("CONNECTED TO : "+ c_Ip);
+    System.out.println("CLIENT CONNECTED \nCLIENT INFORMATION : "+ s);
     in = new Scanner(s.getInputStream());
     pw = new PrintWriter(s.getOutputStream(),true);
-    while (in.hasNextLine())
+    do
     {
       o = in.nextLine().trim();
       if(o.startsWith("create"))
@@ -85,7 +84,7 @@ class Server
       pw.println(out);
       pw.flush();
       System.out.println(out + " ==> " + o);
-    }
+    }while(!o.equals("exit"));
     s.close();
     ss.close();
     in.close();
