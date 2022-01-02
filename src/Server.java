@@ -45,15 +45,23 @@ class Server
       {
         o = o.substring(4);
         File f = new File(o);
-        sc = new Scanner(f);
-        out = "";
-        while (sc.hasNextLine())
+        if(f.exists())
         {
-          String data = sc.nextLine();
-          out = out + "\n" + data;
+          sc = new Scanner(f);
+          out = "";
+          while (sc.hasNextLine())
+          {
+            String data = sc.nextLine();
+            out = out + "\n" + data;
+          }
+          sc.close();
         }
+        else
+        {
+          out = "FILE NOT FOUND";
+        }
+        out = out.trim();
         out = out + "\n\0";
-        sc.close();
       }
       else if(o.startsWith("edit"))
       {
@@ -74,7 +82,14 @@ class Server
         }
         else
         {
-          out = "FAILED TO DELETE THE FILE";
+          if(f.exists())
+          {
+            out = "FAILED TO DELETE THE FILE";
+          }
+          else
+          {
+            out = "FILE NOT FOUND";
+          }
         }
       }
       else if(o.equals("exit"))
@@ -87,7 +102,7 @@ class Server
       }
       pw.println(out);
       pw.flush();
-      System.out.println(out + " ==> " + o);
+      System.out.println(out.trim() + " ==> " + o);
     }while(!o.equals("exit"));
     s.close();
     ss.close();
