@@ -26,16 +26,20 @@ class Server
       {
         o = o.substring(7);
         File f = new File(o);
-        FileWriter fw = new FileWriter(o,false);
-        fw.write("Hello World");
+        FileWriter fw;
         if (f.createNewFile())
         {
           out = "FILE CREATED";
+          fw = new FileWriter(o);
+
         }
         else
         {
           out = "FILE ALREADY EXIST";
+          fw = new FileWriter(o,true);
         }
+        fw.write("Hello World\n");
+        fw.close();
       }
       else if(o.startsWith("cat"))
       {
