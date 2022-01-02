@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.ServerSocket;
 import java.util.Scanner;
@@ -9,8 +8,7 @@ class Server
 {
   Socket s;
   ServerSocket ss;
-  String o,c_Ip,out;
-  InetSocketAddress socketAddress;
+  String o,out;
   PrintWriter pw;
   Scanner in,sc;
   Server(int port) throws Exception
@@ -28,6 +26,8 @@ class Server
       {
         o = o.substring(7);
         File f = new File(o);
+        FileWriter fw = new FileWriter(o,false);
+        fw.write("Hello World");
         if (f.createNewFile())
         {
           out = "FILE CREATED";
