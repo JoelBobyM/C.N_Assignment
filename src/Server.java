@@ -31,7 +31,6 @@ class Server
         {
           out = "FILE CREATED";
           fw = new FileWriter(o);
-
         }
         else
         {
