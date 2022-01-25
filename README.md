@@ -1,2 +1,2 @@
 # Server-Client Program
-A Server-Client Program using Socket Programming (JAVA).
+A Server-Client File-Management Program using Socket Programming (JAVA).
